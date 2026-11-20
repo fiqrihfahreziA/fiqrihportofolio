@@ -224,6 +224,27 @@ img{max-width:100%}
   .cta{border-radius:24px}
   #glow{display:none}
 }
+
+/* ===== CV menu ===== */
+button.btn{font:inherit;font-weight:600;background:transparent;color:inherit}
+.cvwrap{position:relative;display:inline-block}
+.chev{transition:transform .3s var(--ease)}
+.cvwrap.open .chev{transform:rotate(180deg)}
+.cvmenu{position:absolute;left:0;top:calc(100% + 10px);min-width:250px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:8px;
+  box-shadow:0 20px 44px rgba(42,28,20,.2);opacity:0;visibility:hidden;transform:translateY(-8px) scale(.97);transform-origin:top left;
+  transition:opacity .25s var(--ease),transform .3s var(--ease),visibility .3s;z-index:30;text-align:left}
+.cvwrap.open .cvmenu{opacity:1;visibility:visible;transform:none}
+.cvwrap.up .cvmenu{top:auto;bottom:calc(100% + 10px);transform-origin:bottom left;transform:translateY(8px) scale(.97)}
+.cvwrap.up.open .cvmenu{transform:none}
+.cvmenu a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;color:var(--ink);font-weight:600;transition:background .2s,transform .25s var(--ease)}
+.cvmenu a:hover{background:var(--mint);transform:translateX(3px)}
+.cvmenu .fl{width:36px;height:36px;border-radius:10px;background:var(--mint);display:grid;place-items:center;font-size:.78rem;font-weight:700;color:var(--teal-d);flex:none}
+.cvmenu a:hover .fl{background:var(--teal);color:var(--bg)}
+.cvmenu small{display:block;font-weight:400;color:var(--muted);font-size:.78rem;line-height:1.3}
+@media(max-width:600px){
+  .cvmenu,.cvwrap.up .cvmenu{position:fixed;left:14px;right:14px;top:auto;bottom:14px;min-width:0;transform-origin:bottom center;transform:translateY(24px)}
+  .cvwrap.open .cvmenu,.cvwrap.up.open .cvmenu{transform:none}
+}
 </style>
 </head>
 <body>
@@ -243,6 +264,7 @@ img{max-width:100%}
     <p class="sum">Lulusan Teknik Informatika Universitas Madura yang merancang aplikasi web untuk operasional rumah sakit: dari analisis kebutuhan, database, hingga sistem yang siap dipakai.</p>
     <div class="btns">
       <a class="btn pri" href="#proyek">Lihat proyek</a>
+      <div class="cvwrap"><button type="button" class="btn sec" aria-haspopup="menu" aria-expanded="false">Lihat CV <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><span class="cvmenu" role="menu"><a role="menuitem" href="cv-id.pdf" target="_blank" rel="noopener"><span class="fl">ID</span><span>Bahasa Indonesia<small>Buka CV format PDF</small></span></a><a role="menuitem" href="cv-en.pdf" target="_blank" rel="noopener"><span class="fl">EN</span><span>English<small>Open CV as PDF</small></span></a></span></div>
       <a class="btn sec" href="#kontak">Hubungi saya</a>
     </div>
   </div>
@@ -345,6 +367,7 @@ img{max-width:100%}
     <p>Saya terbuka untuk diskusi pengembangan aplikasi web. Kirim pesan, saya balas secepatnya.</p>
     <div class="btns" style="justify-content:center">
       <a class="btn pri" href="mailto:contactfiqrih@gmail.com">Kirim email</a>
+      <div class="cvwrap up"><button type="button" class="btn " aria-haspopup="menu" aria-expanded="false">Lihat CV <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><span class="cvmenu" role="menu"><a role="menuitem" href="cv-id.pdf" target="_blank" rel="noopener"><span class="fl">ID</span><span>Bahasa Indonesia<small>Buka CV format PDF</small></span></a><a role="menuitem" href="cv-en.pdf" target="_blank" rel="noopener"><span class="fl">EN</span><span>English<small>Open CV as PDF</small></span></a></span></div>
       <a class="btn" href="https://wa.me/6281911982396" target="_blank" rel="noopener">WhatsApp</a>
       <a class="btn" href="https://linkedin.com/in/fiqrih-fahrezi-729b002b8" target="_blank" rel="noopener">LinkedIn</a>
     </div>
@@ -361,7 +384,7 @@ $('#yr').textContent=new Date().getFullYear();
 
 /* data */
 const projects=[
- {t:'Aplikasi Kordik Rumah Sakit',c:'rs',tag:'Rumah sakit · RSUD Mohammad Zyn',d:'Aplikasi web end-to-end dengan struktur database relasional, backend untuk logika bisnis, dan antarmuka responsif.',s:['PHP','Laravel','MySQL','Bootstrap','JavaScript']},
+ {t:'Kordik: Koordinasi Pendidikan Klinik',c:'rs',tag:'Rumah sakit · RSUD Mohammad Zyn',d:'Sistem web untuk mengoordinasikan pendidikan klinik di rumah sakit, dibangun end-to-end dengan database relasional, backend logika bisnis, dan antarmuka responsif.',s:['PHP','Laravel','MySQL','Bootstrap','JavaScript']},
  {t:'Pendaftaran Direktur Rumah Sakit',c:'rs',tag:'Rumah sakit · RSUD Mohammad Zyn',d:'Sistem pendaftaran dan administrasi seleksi calon direktur, mulai dari pengelolaan data calon sampai proses penyaringan.',s:['PHP','Laravel','MySQL','Bootstrap','JavaScript']},
  {t:'Fixora: Pengadaan & Pemeliharaan Barang',c:'rs',tag:'Rumah sakit · RSUD Mohammad Zyn',d:'Digitalisasi pengadaan dan pemeliharaan barang agar manajemen inventaris rumah sakit lebih efisien dan tercatat rapi.',s:['PHP','Laravel','MySQL','Bootstrap','JavaScript']},
  {t:'Sistem Pembelajaran Digital Pesantren',c:'pes',tag:'Pesantren · Proyek akhir',d:'Website pembelajaran untuk santri dan pengajar: pengelolaan materi, data pengguna, dan aktivitas akademik dalam satu sistem.',s:['PHP','Laravel','MySQL','Bootstrap','JavaScript']},
@@ -419,6 +442,13 @@ addEventListener('scroll',()=>{
  links.forEach((a,i)=>a.classList.toggle('on',i===cur));
 },{passive:true});
 addEventListener('mousemove',e=>{const g=$('#glow');g.style.left=e.clientX+'px';g.style.top=e.clientY+'px'});
+
+/* cv menu */
+const closeCv=(except)=>$$('.cvwrap.open').forEach(w=>{if(w!==except){w.classList.remove('open');$('button',w).setAttribute('aria-expanded','false')}});
+$$('.cvwrap').forEach(w=>{const b=$('button',w);
+ b.addEventListener('click',e=>{e.stopPropagation();closeCv(w);const o=w.classList.toggle('open');b.setAttribute('aria-expanded',o)})});
+document.addEventListener('click',e=>{if(!e.target.closest('.cvwrap'))closeCv()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeCv()});
 
 /* theme */
 const root=document.documentElement,tb=$('#theme');
